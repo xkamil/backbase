@@ -1,0 +1,31 @@
+ISSUE_1 - no validation when registering user with no password
+  given user register input with missing password
+  when registration request is sent
+  then response status code 422 is expected
+  and errors should contain "password": "can't be blank"
+
+  current:
+    POST https://qa-task.backbasecloud.com/api/users
+    Authorization: Basic Y2FuZGlkYXRleDpxYS1pcy1jb29s
+    Accept: */*
+    Content-Type: application/json; charset=UTF-8
+    {"user":{"username":null,"email":"2b4516f2-8da4-4071-b429-6c95749911cd@example.com","password":"09f45afb3abe7e75d175f8a"}}
+
+    HTTP/1.1 422 Unprocessable Entity
+    Server: nginx/1.14.0 (Ubuntu)
+    Date: Thu, 17 Mar 2022 20:03:12 GMT
+    Content-Type: application/json; charset=utf-8
+    Content-Length: 40
+    Connection: keep-alive
+    X-Powered-By: Express
+    Access-Control-Allow-Origin: *
+    Vary: X-HTTP-Method-Override
+    ETag: W/"28-0m+6aoej5NjFqpfDq7E4Lw"
+    Strict-Transport-Security: max-age=15768000
+    {
+        "errors": {
+            "username": "can't be blank"
+        }
+    }
+
+
