@@ -19,19 +19,19 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 @DisplayName("user: register")
-public class UserRegisterTest extends BaseApiSuite {
+class UserRegisterTest extends BaseApiSuite {
 
   private static BackbaseApiClient apiClient;
 
   @BeforeAll
-  public static void beforeAll() {
+  static void beforeAll() {
     apiClient = new BackbaseApiClient();
   }
 
   @Test
   @Tag("SMOKE")
   @DisplayName("register user")
-  public void registerUser() {
+  void registerUser() {
     _given("valid user register input");
     var userRegisterReqBody = UserRegisterSampler.fullInput();
 
@@ -52,7 +52,7 @@ public class UserRegisterTest extends BaseApiSuite {
 
   @Test
   @DisplayName("register user with email already taken by other registered user - error expected")
-  public void registerUserEmailTaken() {
+  void registerUserEmailTaken() {
     _given("registered user email");
     var registeredUserEmail = RegisteredUsers.USER_1.email;
 
@@ -70,7 +70,7 @@ public class UserRegisterTest extends BaseApiSuite {
 
   @Test
   @DisplayName("register user with username already taken by other registered user - error expected")
-  public void registerUserUsername() {
+  void registerUserUsername() {
     _given("registered user email");
     var registeredUserUsername = RegisteredUsers.USER_1.username;
 
@@ -90,7 +90,7 @@ public class UserRegisterTest extends BaseApiSuite {
   @DisplayName("register user missing required data - error expected")
   @ParameterizedTest(name = "missing {0}")
   @MethodSource("provideInvalidRegisterUserData")
-  public void registerUserWithMissingData(String missingField, UserRegisterReqBody userRegisterReqBody) {
+  void registerUserWithMissingData(String missingField, UserRegisterReqBody userRegisterReqBody) {
     _given("user register data with missing " + missingField);
 
     _when("user register request is sent");

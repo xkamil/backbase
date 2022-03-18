@@ -16,13 +16,13 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 @DisplayName("article: create")
-public class ArticleCreateTest extends BaseApiSuite {
+class ArticleCreateTest extends BaseApiSuite {
 
   private static BackbaseApiClient apiClient;
   private static User authenticatedUserDetails;
 
   @BeforeAll
-  public static void beforeAll() {
+  static void beforeAll() {
     apiClient = new BackbaseApiClient();
     apiClient.authenticateUser(RegisteredUsers.USER_1.email, RegisteredUsers.USER_1.password);
     authenticatedUserDetails = apiClient.getCurrentUser().ok().user;
@@ -31,7 +31,7 @@ public class ArticleCreateTest extends BaseApiSuite {
   @DisplayName("create article")
   @ParameterizedTest(name = "request body contains {0}")
   @MethodSource("provideValidArticleCreateInput")
-  public void createArticle(String description, ArticleCreateReqBody articleCreateReqBody) {
+  void createArticle(String description, ArticleCreateReqBody articleCreateReqBody) {
     _given("valid create article request body");
 
     _when("create article request is sent");
