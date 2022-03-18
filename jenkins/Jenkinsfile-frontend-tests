@@ -1,0 +1,60 @@
+#!groovy
+
+pipeline {
+
+    agent {
+        label 'test'
+    }
+
+    environment {
+        JAVA_HOME = '/pathToJdkDirectory'
+        PATH = "$JAVA_HOME/bin:$PATH"
+        JIRA_CREDENTIALS = credentials('jira-rest-api-fs-user')
+    }
+
+    parameters {
+        gitParameter(branch: '', branchFilter: '.*', defaultValue: 'origin/master', description: 'Branch from which tests will be executed', name: 'BRANCH',
+                quickFilterEnabled: true, selectedValue: 'TOP', sortMode: 'DESCENDING_SMART', tagFilter: '*', type: 'PT_BRANCH')
+        choice(name: 'RERUN_FAILED_TESTS', choices: ['0', '1', '2', '3'], description: 'If test fail it will be rerun specified times until passed')
+    }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '7'))
+        timestamps()
+    }
+
+    stages {
+
+        stage('cleanup') {
+            steps {
+                cleanWs()
+            }
+        }
+
+        stage('checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('api-tests') {
+            steps {
+                script {
+                    sh """./mvnw clean test \
+                            --projects frontend \
+                            --also-make \
+                            -Dmaven.test.failure.ignore=true \
+                            -DfailIfNoTests=false \
+                            -Dsurefire.rerunFailingTestsCount=${params.RERUN_FAILED_TESTS} """
+                }
+
+            }
+            post {
+                always {
+                    junit "frontend/target/surefire-reports/*.xml"
+                    archiveArtifacts artifacts: "qa-service-${service}/target/test-reports/**/*"
+                }
+            }
+        }
+    }
+}
