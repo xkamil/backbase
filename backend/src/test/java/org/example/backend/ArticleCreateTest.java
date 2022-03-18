@@ -18,12 +18,12 @@ import org.junit.jupiter.params.provider.MethodSource;
 @DisplayName("article: create")
 class ArticleCreateTest extends BaseApiSuite {
 
-  private static BackbaseApiClient apiClient;
+  private static ApiClient apiClient;
   private static User authenticatedUserDetails;
 
   @BeforeAll
   static void beforeAll() {
-    apiClient = new BackbaseApiClient();
+    apiClient = new ApiClient();
     apiClient.authenticateUser(RegisteredUsers.USER_1.email, RegisteredUsers.USER_1.password);
     authenticatedUserDetails = apiClient.getCurrentUser().ok().user;
   }

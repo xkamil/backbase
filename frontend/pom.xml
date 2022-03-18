@@ -12,4 +12,12 @@
   <artifactId>frontend</artifactId>
 
 
+  <dependencies>
+    <dependency>
+      <groupId>com.codeborne</groupId>
+      <artifactId>selenide</artifactId>
+      <version>6.3.4</version>
+    </dependency>
+  </dependencies>
+
 </project>

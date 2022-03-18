@@ -5,7 +5,7 @@ import static io.restassured.RestAssured.given;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import org.apache.http.entity.ContentType;
-import org.example.backend.config.BackbaseConfig;
+import org.example.backend.config.BackendConfig;
 import org.example.backend.config.filter.AuthTokenFilter;
 import org.example.backend.config.filter.RequestLoggingFilter;
 import org.example.backend.config.filter.ResponseLoggingFilter;
@@ -17,7 +17,7 @@ import org.example.backend.model.response.ArticleResBody;
 import org.example.backend.model.response.UserResBody;
 import org.example.backend.sampler.UserLoginSampler;
 
-public class BackbaseApiClient {
+public class ApiClient {
 
   private static final String ARTICLES = "/api/articles";
   private static final String USERS = "/api/users";
@@ -27,20 +27,20 @@ public class BackbaseApiClient {
   private final RequestSpecification requestSpec;
   private final AuthTokenFilter authTokenFilter;
 
-  public BackbaseApiClient() {
+  public ApiClient() {
     authTokenFilter = new AuthTokenFilter("jwtauthorization");
 
     requestSpec = new RequestSpecBuilder()
         .addFilter(new RequestLoggingFilter())
         .addFilter(new ResponseLoggingFilter())
         .addFilter(authTokenFilter)
-        .setBaseUri(BackbaseConfig.API_URL)
+        .setBaseUri(BackendConfig.API_URL)
         .setContentType(ContentType.APPLICATION_JSON.toString())
         .setRelaxedHTTPSValidation()
         .build()
         .auth()
         .preemptive()
-        .basic(BackbaseConfig.API_USERNAME, BackbaseConfig.API_PASSWORD);
+        .basic(BackendConfig.API_USERNAME, BackendConfig.API_PASSWORD);
   }
 
   public UserResBody authenticateUser(String email, String password) {

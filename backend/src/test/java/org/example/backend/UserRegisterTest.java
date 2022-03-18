@@ -21,11 +21,11 @@ import org.junit.jupiter.params.provider.MethodSource;
 @DisplayName("user: register")
 class UserRegisterTest extends BaseApiSuite {
 
-  private static BackbaseApiClient apiClient;
+  private static ApiClient apiClient;
 
   @BeforeAll
   static void beforeAll() {
-    apiClient = new BackbaseApiClient();
+    apiClient = new ApiClient();
   }
 
   @Test
