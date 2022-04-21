@@ -1,7 +1,7 @@
 package org.example.backend.sampler;
 
-import org.example.backend.model.request.UserLoginReqBody;
-import org.example.backend.model.request.UserLoginReqBody.User;
+import org.example.backend.api.user.UserLoginReqBody;
+import org.example.backend.api.user.UserLoginReqBody.User;
 
 public class UserLoginSampler {
 

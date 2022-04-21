@@ -2,41 +2,45 @@ package org.example.backend;
 
 import static io.restassured.RestAssured.given;
 
-import io.restassured.builder.RequestSpecBuilder;
+import com.example.serum.api.filter.RequestHeaderFilter;
+import com.example.serum.api.response.ApiJsonResponse;
+import com.example.serum.api.response.ResponseStatusCode;
 import io.restassured.specification.RequestSpecification;
-import org.apache.http.entity.ContentType;
+import org.example.backend.api.ErrorResBody;
+import org.example.backend.api.user.UserLoginReqBody;
+import org.example.backend.api.user.UserRegisterReqBody;
+import org.example.backend.api.user.UserResBody;
 import org.example.backend.config.BackendConfig;
-import org.example.backend.config.filter.AuthTokenFilter;
-import org.example.backend.config.filter.RequestLoggingFilter;
-import org.example.backend.config.filter.ResponseLoggingFilter;
-import org.example.backend.model.request.ArticleCreateReqBody;
-import org.example.backend.model.request.UserLoginReqBody;
-import org.example.backend.model.request.UserRegisterReqBody;
-import org.example.backend.model.response.ApiResponse;
-import org.example.backend.model.response.ArticleResBody;
-import org.example.backend.model.response.UserResBody;
+import org.example.backend.config.RequestSpec;
+import org.example.backend.config.filter.RequestIdFilter;
+import org.example.backend.model.api.articles.ArticleCreateReqBody;
+import org.example.backend.model.api.articles.ArticleCreateRequest;
+import org.example.backend.model.api.articles.ArticleDetailsRequest;
+import org.example.backend.model.api.articles.ArticlesListQueryParams;
+import org.example.backend.model.api.articles.ArticlesListRequest;
 import org.example.backend.sampler.UserLoginSampler;
 
 public class ApiClient {
 
-  private static final String ARTICLES = "/api/articles";
-  private static final String USERS = "/api/users";
-  private static final String USER = "/api/user";
-  private static final String USERS_LOGIN = "/api/users/login";
-
   private final RequestSpecification requestSpec;
-  private final AuthTokenFilter authTokenFilter;
+  private final RequestHeaderFilter authTokenFilter;
+  private final RequestIdFilter requestIdFilter;
+
+  public static class AuthTokenFilter extends RequestHeaderFilter {
+
+    public AuthTokenFilter() {
+      super("jwtauthorization");
+    }
+  }
 
   public ApiClient() {
-    authTokenFilter = new AuthTokenFilter("jwtauthorization");
+    authTokenFilter = new AuthTokenFilter();
+    requestIdFilter = new RequestIdFilter();
 
-    requestSpec = new RequestSpecBuilder()
-        .addFilter(new RequestLoggingFilter())
-        .addFilter(new ResponseLoggingFilter())
-        .addFilter(authTokenFilter)
+    requestSpec = RequestSpec.baseJsonRequestSpecBuilder()
         .setBaseUri(BackendConfig.API_URL)
-        .setContentType(ContentType.APPLICATION_JSON.toString())
-        .setRelaxedHTTPSValidation()
+        .addFilter(authTokenFilter)
+        .addFilter(requestIdFilter)
         .build()
         .auth()
         .preemptive()
@@ -44,27 +48,41 @@ public class ApiClient {
   }
 
   public UserResBody authenticateUser(String email, String password) {
-    var authOutput = loginUser(UserLoginSampler.fullInput(email, password)).ok();
-    authTokenFilter.setToken(authOutput.user.token);
+    var authOutput = loginUser(UserLoginSampler.fullInput(email, password)).assertOk();
+    authTokenFilter.setValue("Token " + authOutput.user.token);
     return authOutput;
   }
 
   // api methods
-
-  public ApiResponse<UserResBody> registerUser(UserRegisterReqBody reqBody) {
-    return new ApiResponse<>(given(requestSpec).body(reqBody).post(USERS), UserResBody.class);
+  public ApiJsonResponse<UserResBody, ErrorResBody> registerUser(UserRegisterReqBody reqBody) {
+    var req = given(requestSpec).body(reqBody).post("/api/users");
+    return ApiJsonResponse.from(req, UserResBody.class, ResponseStatusCode.OK, ErrorResBody.class);
   }
 
-  public ApiResponse<UserResBody> loginUser(UserLoginReqBody reqBody) {
-    return new ApiResponse<>(given(requestSpec).body(reqBody).post(USERS_LOGIN), UserResBody.class);
+  public ApiJsonResponse<UserResBody, ErrorResBody> loginUser(UserLoginReqBody reqBody) {
+    var req = given(requestSpec).body(reqBody).post("/api/users/login");
+    return ApiJsonResponse.from(req, UserResBody.class, ResponseStatusCode.OK, ErrorResBody.class);
   }
 
-  public ApiResponse<UserResBody> getCurrentUser() {
-    return new ApiResponse<>(given(requestSpec).get(USER), UserResBody.class);
+  public ApiJsonResponse<UserResBody, ErrorResBody> getCurrentUser() {
+    return getCurrentUser(new ArticlesListQueryParams());
   }
 
-  public ApiResponse<ArticleResBody> createArticle(ArticleCreateReqBody reqBody) {
-    return new ApiResponse<>(given(requestSpec).body(reqBody).post(ARTICLES), ArticleResBody.class);
+  public ApiJsonResponse<UserResBody, ErrorResBody> getCurrentUser(ArticlesListQueryParams queryParams) {
+    var req = given(requestSpec).queryParams(queryParams.asMap()).get("/api/user");
+    return ApiJsonResponse.from(req, UserResBody.class, ResponseStatusCode.OK, ErrorResBody.class);
+  }
+
+  public ArticleCreateRequest createArticle(ArticleCreateReqBody reqBody) {
+    return new ArticleCreateRequest(requestSpec, reqBody);
+  }
+
+  public ArticleDetailsRequest getArticleDetails() {
+    return new ArticleDetailsRequest(requestSpec);
+  }
+
+  public ArticlesListRequest getArticlesList() {
+    return new ArticlesListRequest(requestSpec);
   }
 
 }
