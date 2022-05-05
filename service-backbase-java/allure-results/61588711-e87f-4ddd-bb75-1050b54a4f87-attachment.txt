@@ -1,0 +1,21 @@
+2022-05-05T17:29:52.483Z INFO p.n.t.s.a.f.ResponseLoggingFilter - Response (237 ms) 
+HTTP/1.1 200 OK
+Server: nginx/1.14.0 (Ubuntu)
+Date: Thu, 05 May 2022 17:29:52 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 309
+Connection: keep-alive
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Vary: X-HTTP-Method-Override
+ETag: W/"135-+3OwtwyYDktpZ3X+1KGcxw"
+Strict-Transport-Security: max-age=15768000
+{
+    "user": {
+        "username": "690f4aaf313",
+        "email": "b1c3344d-3050-409f-8dd1-68b4489a612d@example.com",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMzM4ZGFiMjA5MmNmYzYwNjhlMDI5OCIsInVzZXJuYW1lIjoiNjkwZjRhYWYzMTMiLCJleHAiOjE2NTY5NTU3OTIsImlhdCI6MTY1MTc3MTc5Mn0.JuU06jrZblz-7xtYyxCEhVMTYV6Rua-kxJ8wIG5Jf0Y"
+    }
+}
+
+

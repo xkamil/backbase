@@ -1,0 +1,389 @@
+2022-05-05T17:29:53.214Z INFO p.n.t.s.a.f.ResponseLoggingFilter - Response (170 ms) 
+HTTP/1.1 200 OK
+Server: nginx/1.14.0 (Ubuntu)
+Date: Thu, 05 May 2022 17:29:53 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 10480
+Connection: keep-alive
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+ETag: W/"28f0-kcev+6eRZZMVyPsKISc/2w"
+Strict-Transport-Security: max-age=15768000
+{
+    "articles": [
+        {
+            "slug": "title-ed204fc5-34d4-43b2-8b1b-37ca7edf5092-u5khun",
+            "title": "Title ed204fc5-34d4-43b2-8b1b-37ca7edf5092",
+            "description": "Description 92c20bde-1f42-49a3-aeb1-564136beb4dd",
+            "body": "Body 0decf9af-9930-4d4a-a09d-ef483753bc16",
+            "createdAt": "2022-05-05T17:29:53.049Z",
+            "updatedAt": "2022-05-05T17:29:53.049Z",
+            "tagList": [
+                "9b4284aa-42c9-4ceb-8c87-47d2f3bbf654",
+                "7b590e24-182f-4c8c-865f-6da5224a8e83"
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-204200ab-6980-4e6d-903b-24bb15dfc076-r5ye73",
+            "title": "Title 204200ab-6980-4e6d-903b-24bb15dfc076",
+            "description": "Description 53200fb2-a2a3-4e4d-8b1d-b6410d0ef7c6",
+            "body": "Body e75f6192-7fc5-4078-a2f9-514ed29f8b4b",
+            "createdAt": "2022-05-05T17:29:52.865Z",
+            "updatedAt": "2022-05-05T17:29:52.865Z",
+            "tagList": [
+                "0685d3b5-7aba-4d0d-8eb8-3b898941cc47",
+                "2582e607-8595-44d7-9d24-a4bd4e95879e"
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-abde7afb-83a3-4333-b616-7138349a3244-9s5uhv",
+            "title": "Title abde7afb-83a3-4333-b616-7138349a3244",
+            "description": "Description 13c3d4b0-5bbd-401b-8d97-bf3d5c244a4f",
+            "body": "Body bb94b6ca-4156-4d58-b52d-908092c1635b",
+            "createdAt": "2022-05-05T17:29:52.703Z",
+            "updatedAt": "2022-05-05T17:29:52.703Z",
+            "tagList": [
+                "72dc5206-f3fd-45f0-a72a-c5f042e778bb",
+                "df99d7a0-f8c1-43fd-8a69-1ee4ce194b25"
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-0f0ad9bb-1ed0-4de8-b31a-2f2ac0166653-x77pfp",
+            "title": "Title 0f0ad9bb-1ed0-4de8-b31a-2f2ac0166653",
+            "description": "Description 21b9869c-bfc3-49dc-b393-6b87bbaf43ad",
+            "body": "Body acfd98f9-bb42-4ea8-857f-d8bf915dced9",
+            "createdAt": "2022-05-05T17:29:52.270Z",
+            "updatedAt": "2022-05-05T17:29:52.270Z",
+            "tagList": [
+                "456f8d65-e633-4d5c-bc32-8742bb1d9541",
+                "0c3b2094-092d-4607-bf2e-decc5f4de51f"
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-01c9e99d-af9f-476a-b1c7-faa3a37b1aef-tq2w1t",
+            "title": "Title 01c9e99d-af9f-476a-b1c7-faa3a37b1aef",
+            "description": "Description 4b4ee1ab-69a2-4f9e-8dc8-74380983f665",
+            "body": "Body 443006cd-7884-4bae-b370-d86e7c1d5625",
+            "createdAt": "2022-05-05T17:29:51.980Z",
+            "updatedAt": "2022-05-05T17:29:51.980Z",
+            "tagList": [
+                
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-66e4f9bb-88f1-4a26-966c-f35678671a4f-w4mbk",
+            "title": "Title 66e4f9bb-88f1-4a26-966c-f35678671a4f",
+            "description": "Description 55f448c7-67d6-4912-ad3f-55ab831f1312",
+            "body": "Body 720f7bdc-63ea-476c-99f9-7cfb201cdb52",
+            "createdAt": "2022-05-05T17:25:06.698Z",
+            "updatedAt": "2022-05-05T17:25:06.698Z",
+            "tagList": [
+                "dd9eae08-f787-42c3-9479-d23b9809fb8e",
+                "24366e02-2f1d-4564-abd7-9ed412d1031e"
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-16ffbdb8-1e85-4bca-ad6b-6df68df76540-x0wyhr",
+            "title": "Title 16ffbdb8-1e85-4bca-ad6b-6df68df76540",
+            "description": "Description 99603eac-efe0-4508-adac-f8c2ed001056",
+            "body": "Body be24086e-251c-4f2a-a7e5-846bb7dfcd22",
+            "createdAt": "2022-05-05T17:25:06.539Z",
+            "updatedAt": "2022-05-05T17:25:06.539Z",
+            "tagList": [
+                "fa5ab2fd-fca7-4639-a221-aad50bbe10ed",
+                "fffc71ad-6494-4bef-837d-4e929466826b"
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-00fffba5-b18c-4924-8da2-71812b34aefc-vhnlc7",
+            "title": "Title 00fffba5-b18c-4924-8da2-71812b34aefc",
+            "description": "Description cc2d374b-3682-4d74-98a9-02143b7e254b",
+            "body": "Body 322bd3f4-3c9e-4ae1-b304-d20011557c5c",
+            "createdAt": "2022-05-05T17:25:06.358Z",
+            "updatedAt": "2022-05-05T17:25:06.358Z",
+            "tagList": [
+                "fbb48139-ed01-4d6a-a887-b99d1e6b04e8",
+                "2e74f69c-bfd4-4c18-8086-87d1c4423ee6"
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-e430af08-fa66-47fb-a339-1403d0400295-z95fvy",
+            "title": "Title e430af08-fa66-47fb-a339-1403d0400295",
+            "description": "Description 3892b65b-1022-43a5-b9db-a82b5d6d1906",
+            "body": "Body e7a89563-131f-4c69-be5a-3da9926f27ac",
+            "createdAt": "2022-05-05T17:25:05.945Z",
+            "updatedAt": "2022-05-05T17:25:05.945Z",
+            "tagList": [
+                "e2a6ba83-a501-45eb-8860-3446b4c6a775",
+                "c3ecbc95-0425-47ee-9681-bd354013ec43"
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-1df82d73-a145-4b38-8580-8af41f1b0346-dj3qjt",
+            "title": "Title 1df82d73-a145-4b38-8580-8af41f1b0346",
+            "description": "Description 69859839-4555-4793-bd76-bd08641a8172",
+            "body": "Body c967f11d-25a1-4eaa-bea3-a35e3c960c11",
+            "createdAt": "2022-05-05T17:25:05.757Z",
+            "updatedAt": "2022-05-05T17:25:05.757Z",
+            "tagList": [
+                
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-224df76c-f6ed-4483-ba4c-b7381bf34aec-hywzw0",
+            "title": "Title 224df76c-f6ed-4483-ba4c-b7381bf34aec",
+            "description": "Description e3e60193-4b73-4c93-a172-b905f7f85436",
+            "body": "Body 9636dd46-5d66-406e-9229-3465d4bf4d04",
+            "createdAt": "2022-04-10T18:40:36.546Z",
+            "updatedAt": "2022-04-10T18:40:36.546Z",
+            "tagList": [
+                
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-67e1fc3f-15a2-418c-bbc1-ee89427c8b83-vjtuge",
+            "title": "Title 67e1fc3f-15a2-418c-bbc1-ee89427c8b83",
+            "description": "Description c2260c76-d1be-49bb-9d19-5b2979ad5fec",
+            "body": "Body 3a4b4601-4530-416e-a484-803558844526",
+            "createdAt": "2022-04-10T18:40:36.358Z",
+            "updatedAt": "2022-04-10T18:40:36.358Z",
+            "tagList": [
+                
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-b4f68403-8762-4800-991f-5688f7554a74-jzzpij",
+            "title": "Title b4f68403-8762-4800-991f-5688f7554a74",
+            "description": "Description c0b99a6b-38a2-4e8d-8fc3-cd2044d9a5b5",
+            "body": "Body b1218ab0-967f-4266-8ce4-37809c41761e",
+            "createdAt": "2022-04-10T18:40:08.983Z",
+            "updatedAt": "2022-04-10T18:40:08.983Z",
+            "tagList": [
+                
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-cac404a4-b15b-4bc5-987e-f68ec39bd230-uo06ro",
+            "title": "Title cac404a4-b15b-4bc5-987e-f68ec39bd230",
+            "description": "Description 8a4d8fb7-25fa-4306-b983-35c8f8cfce1e",
+            "body": "Body 29613c6c-ca16-4659-8afa-3fb8e9db3ebf",
+            "createdAt": "2022-04-10T18:40:08.804Z",
+            "updatedAt": "2022-04-10T18:40:08.804Z",
+            "tagList": [
+                
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-1219abc5-1121-419f-839e-bdd838d00b68-9tbsci",
+            "title": "Title 1219abc5-1121-419f-839e-bdd838d00b68",
+            "description": "Description 438eec0f-c52c-45fe-89a6-a046c8ca5558",
+            "body": "Body 4b2719ed-2b28-415b-8439-3c9279f96730",
+            "createdAt": "2022-04-10T18:39:16.448Z",
+            "updatedAt": "2022-04-10T18:39:16.448Z",
+            "tagList": [
+                
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-8eda95b5-6528-45d7-9444-ee6253c27a30-ar7mtn",
+            "title": "Title 8eda95b5-6528-45d7-9444-ee6253c27a30",
+            "description": "Description 7ba1efd7-206b-46bd-9ecb-76680470d7c7",
+            "body": "Body e73e8f8c-5c9e-4b2c-a346-ce4d63a2137f",
+            "createdAt": "2022-04-10T18:39:16.267Z",
+            "updatedAt": "2022-04-10T18:39:16.267Z",
+            "tagList": [
+                
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-4a249038-7439-4fa1-9309-7bfd5e0727f3-u3u6ie",
+            "title": "Title 4a249038-7439-4fa1-9309-7bfd5e0727f3",
+            "description": "Description 3bdcf01f-c36d-498c-9bf6-910e668128da",
+            "body": "Body 83c2dbf3-f349-4aa6-8192-ff5000d65edd",
+            "createdAt": "2022-04-10T12:40:04.199Z",
+            "updatedAt": "2022-04-10T12:40:04.199Z",
+            "tagList": [
+                
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-31c2aeda-4372-4fad-9c1e-6a69ad0c0d4f-ai4xgz",
+            "title": "Title 31c2aeda-4372-4fad-9c1e-6a69ad0c0d4f",
+            "description": "Description 5bee9d48-4dba-4d6f-a5bd-96f9a77b71ad",
+            "body": "Body 11dd5193-2f39-4931-bfb0-4bb69d24364c",
+            "createdAt": "2022-04-10T12:39:12.558Z",
+            "updatedAt": "2022-04-10T12:39:12.558Z",
+            "tagList": [
+                "53067142-16b4-4101-b0c5-53cc28319a1b",
+                "8a88308a-bcb9-424d-b28c-e9e8a0d1aeb0"
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-e2872315-d74c-4ecb-b15d-a6dc09b18712-b2gbcq",
+            "title": "Title e2872315-d74c-4ecb-b15d-a6dc09b18712",
+            "description": "Description 6dfec7bf-1cda-4c3c-b4e7-0d604bbb5fb0",
+            "body": "Body 0d89d880-ed1c-486a-9bdf-d02a99804e77",
+            "createdAt": "2022-04-10T12:39:12.372Z",
+            "updatedAt": "2022-04-10T12:39:12.372Z",
+            "tagList": [
+                "f63b6788-0d14-436f-9231-1c070349d152",
+                "9eee54db-7f4a-481d-93d2-b0fb8ad0d71c"
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        },
+        {
+            "slug": "title-e034f2dd-4b34-4e20-841c-c825e6b08880-55j04b",
+            "title": "Title e034f2dd-4b34-4e20-841c-c825e6b08880",
+            "description": "Description b7295e7a-5ce8-4188-95ef-3697c9d87b20",
+            "body": "Body 1963595c-383b-4033-bf06-dd40bcbe97cd",
+            "createdAt": "2022-04-10T12:38:41.503Z",
+            "updatedAt": "2022-04-10T12:38:41.503Z",
+            "tagList": [
+                "b6eab6fc-39bc-48cc-810d-4f186a1bc3f4",
+                "bc20f537-0823-4c7d-a383-62f922bb73fe"
+            ],
+            "favorited": false,
+            "favoritesCount": 0,
+            "author": {
+                "username": "690f4aaf313",
+                "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+                "following": false
+            }
+        }
+    ],
+    "articlesCount": 159
+}
+
+

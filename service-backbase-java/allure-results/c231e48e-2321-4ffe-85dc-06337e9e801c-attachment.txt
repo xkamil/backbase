@@ -1,0 +1,10 @@
+2022-05-05T17:29:53.243Z INFO p.n.t.s.a.f.RequestLoggingFilter - Request:
+
+curl --request GET 'https://qa-task.backbasecloud.com/api/articles?limit=2' \
+--header 'Authorization: Basic Y2FuZGlkYXRleDpxYS1pcy1jb29s' \
+--header 'Accept: */*' \
+--header 'jwtauthorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMzM4ZGFiMjA5MmNmYzYwNjhlMDI5OCIsInVzZXJuYW1lIjoiNjkwZjRhYWYzMTMiLCJleHAiOjE2NTY5NTU3OTIsImlhdCI6MTY1MTc3MTc5Mn0.JuU06jrZblz-7xtYyxCEhVMTYV6Rua-kxJ8wIG5Jf0Y' \
+--header 'Request-Id: |28ae8c41-2d45-4916-937a-201f3ea8c18f.' \
+--header 'Content-Type: application/json; charset=UTF-8' \
+--insecure --silent --show-error --include 
+ 

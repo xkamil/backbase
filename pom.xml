@@ -5,9 +5,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <artifactId>qa-serum</artifactId>
-    <groupId>org.example</groupId>
-    <version>1.0.1-SNAPSHOT</version>
+    <groupId>pl.net.testit.serum</groupId>
+    <artifactId>serum</artifactId>
+    <version>0.2-SNAPSHOT</version>
   </parent>
 
   <artifactId>backbase</artifactId>
@@ -21,8 +21,22 @@
   </properties>
 
   <modules>
-    <module>backend</module>
+    <module>service-backbase-java</module>
   </modules>
+
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>https://repo1.maven.org/maven2</url>
+    </repository>
+    <repository>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/OWNER/REPOSITORY</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
 
   <dependencies>
 
@@ -54,5 +68,18 @@
     </dependency>
 
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>11</release>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>

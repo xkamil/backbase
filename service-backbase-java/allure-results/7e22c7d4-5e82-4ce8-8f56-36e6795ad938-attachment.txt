@@ -1,0 +1,11 @@
+2022-05-05T17:29:52.054Z INFO p.n.t.s.a.f.RequestLoggingFilter - Request:
+
+curl --request POST 'https://qa-task.backbasecloud.com/api/articles' \
+--data '{"article":{"title":"Title 0f0ad9bb-1ed0-4de8-b31a-2f2ac0166653","description":"Description 21b9869c-bfc3-49dc-b393-6b87bbaf43ad","body":"Body acfd98f9-bb42-4ea8-857f-d8bf915dced9","tagList":["456f8d65-e633-4d5c-bc32-8742bb1d9541","0c3b2094-092d-4607-bf2e-decc5f4de51f"]}}' \
+--header 'Authorization: Basic Y2FuZGlkYXRleDpxYS1pcy1jb29s' \
+--header 'Accept: */*' \
+--header 'jwtauthorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMzM4ZGFiMjA5MmNmYzYwNjhlMDI5OCIsInVzZXJuYW1lIjoiNjkwZjRhYWYzMTMiLCJleHAiOjE2NTY5NTU3OTEsImlhdCI6MTY1MTc3MTc5MX0.3QRbM7RH3m6fG2BmTVIdrcIUmfSd4vilHPK6vDPZMrY' \
+--header 'Request-Id: |54e5d5bf-3631-44b0-bcc2-d470bf397ea0.' \
+--header 'Content-Type: application/json; charset=UTF-8' \
+--insecure --silent --show-error --include 
+ 
