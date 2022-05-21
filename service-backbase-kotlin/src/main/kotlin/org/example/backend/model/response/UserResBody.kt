@@ -1,15 +1,13 @@
 package org.example.backend.model.response
 
-import pl.net.testit.serum.commons.json.JsonEntity
+class UserResBody(
+        val user: UserResBodyUser? = null,
+)
 
-class UserResBody : JsonEntity() {
-    var user: User? = null
-
-    class User {
-        var email: String? = null
-        var token: String? = null
-        var username: String? = null
-        var bio: String? = null
-        var image: String? = null
-    }
-}
+class UserResBodyUser(
+        val email: String? = null,
+        val token: String? = null,
+        val username: String? = null,
+        val bio: String? = null,
+        val image: String? = null,
+)

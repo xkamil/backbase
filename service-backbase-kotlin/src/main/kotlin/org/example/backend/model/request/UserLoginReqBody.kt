@@ -1,13 +1,10 @@
 package org.example.backend.model.request
 
-import pl.net.testit.serum.commons.json.JsonEntity
-
-
 class UserLoginReqBody(
-        var user: User?
-) : JsonEntity();
+        var user: UserLoginReqBodyUser?
+)
 
-class User(
+class UserLoginReqBodyUser(
         var email: String?,
         var password: String?
 )

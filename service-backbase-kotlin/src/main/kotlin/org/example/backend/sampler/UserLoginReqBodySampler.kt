@@ -1,13 +1,13 @@
 package org.example.backend.sampler
 
-import org.example.backend.model.request.User
 import org.example.backend.model.request.UserLoginReqBody
+import org.example.backend.model.request.UserLoginReqBodyUser
 
-object UserLoginSampler {
+object UserLoginReqBodySampler {
 
-    fun fullInput(email: String?, password: String?): UserLoginReqBody? {
+    fun fullInput(email: String?, password: String?): UserLoginReqBody {
         return UserLoginReqBody(
-                user = User(
+                user = UserLoginReqBodyUser(
                         email,
                         password
                 )

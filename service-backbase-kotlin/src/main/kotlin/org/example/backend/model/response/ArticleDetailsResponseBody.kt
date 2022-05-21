@@ -1,27 +1,25 @@
 package org.example.backend.model.response
 
-import pl.net.testit.serum.commons.json.JsonEntity
+class ArticleDetailsResponseBody(
+        val article: ArticleDetailsResponseBodyArticle? = null,
+)
 
-class ArticleDetailsResponseBody : JsonEntity() {
-    var article: Article? = null
+class ArticleDetailsResponseBodyArticle(
+        val slug: String? = null,
+        val title: String? = null,
+        val description: String? = null,
+        val body: String? = null,
+        val tagList: List<String>? = null,
+        val createdAt: String? = null,
+        val updatedAt: String? = null,
+        val favorited: Boolean? = null,
+        val favoritesCount: Int? = null,
+        val author: ArticleDetailsResponseBodyArticleAuthor? = null,
+)
 
-    class Article {
-        var slug: String? = null
-        var title: String? = null
-        var description: String? = null
-        var body: String? = null
-        var tagList: List<String>? = null
-        var createdAt: String? = null
-        var updatedAt: String? = null
-        var favorited: Boolean? = null
-        var favoritesCount: Int? = null
-        var author: Author? = null
-    }
-
-    class Author {
-        var username: String? = null
-        var bio: String? = null
-        var image: String? = null
-        var following: Boolean? = null
-    }
-}
+class ArticleDetailsResponseBodyArticleAuthor(
+        val username: String? = null,
+        val bio: String? = null,
+        val image: String? = null,
+        val following: Boolean? = null,
+)

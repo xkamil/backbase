@@ -3,10 +3,10 @@ package org.example.backend.model.request.query_params
 import pl.net.testit.serum.api.request.RequestQueryParams
 
 
-class ArticlesListQueryParams : RequestQueryParams() {
-    var tag: String? = null
-    var author: String? = null
-    var favorited: String? = null
-    var limit: Int? = null
-    var offset: Int? = null
-}
+class ArticlesListQueryParams(
+        val tag: String? = null,
+        val author: String? = null,
+        val favorited: String? = null,
+        val limit: Int? = null,
+        val offset: Int? = null,
+) : RequestQueryParams()
