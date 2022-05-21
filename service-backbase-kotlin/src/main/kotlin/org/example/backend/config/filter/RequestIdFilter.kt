@@ -4,7 +4,7 @@ import pl.net.testit.serum.api.filter.RequestHeaderFilter
 import java.util.*
 
 class RequestIdFilter : RequestHeaderFilter("Request-Id") {
-    init {
-        this.setValue { "|" + UUID.randomUUID() + "." }
-    }
+  init {
+    this.setValue { "|" + UUID.randomUUID() + "." }
+  }
 }

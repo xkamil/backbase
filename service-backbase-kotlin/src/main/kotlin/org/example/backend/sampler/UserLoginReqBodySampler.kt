@@ -5,12 +5,10 @@ import org.example.backend.model.request.UserLoginReqBodyUser
 
 object UserLoginReqBodySampler {
 
-    fun fullInput(email: String?, password: String?): UserLoginReqBody {
-        return UserLoginReqBody(
-                user = UserLoginReqBodyUser(
-                        email,
-                        password
-                )
-        );
-    }
+  fun fullInput(email: String?, password: String?): UserLoginReqBody = UserLoginReqBody(
+    user = UserLoginReqBodyUser(
+      email,
+      password
+    )
+  )
 }

@@ -13,24 +13,24 @@ import pl.net.testit.serum.commons.json.JsonParser
 import java.lang.reflect.Type
 
 object BackbaseRequestSpec {
-    fun baseRestAssuredConfig(): RestAssuredConfig {
-        val httpClientConfig = HttpClientConfig.httpClientConfig()
-                .dontReuseHttpClientInstance()
-                .setParam(CoreConnectionPNames.CONNECTION_TIMEOUT, 30000)
-                .setParam(CoreConnectionPNames.SO_TIMEOUT, 30000)
-        val objectMapperConfig = ObjectMapperConfig.objectMapperConfig()
-                .jackson2ObjectMapperFactory { aClass: Type?, s: String? -> JsonParser.getObjectMapper() }
-        return RestAssuredConfig.newConfig()
-                .sslConfig(SSLConfig.sslConfig().relaxedHTTPSValidation().allowAllHostnames())
-                .httpClient(httpClientConfig)
-                .objectMapperConfig(objectMapperConfig)
-    }
+  fun baseRestAssuredConfig(): RestAssuredConfig {
+    val httpClientConfig = HttpClientConfig.httpClientConfig()
+      .dontReuseHttpClientInstance()
+      .setParam(CoreConnectionPNames.CONNECTION_TIMEOUT, 30000)
+      .setParam(CoreConnectionPNames.SO_TIMEOUT, 30000)
+    val objectMapperConfig = ObjectMapperConfig.objectMapperConfig()
+      .jackson2ObjectMapperFactory { aClass: Type?, s: String? -> JsonParser.getObjectMapper() }
+    return RestAssuredConfig.newConfig()
+      .sslConfig(SSLConfig.sslConfig().relaxedHTTPSValidation().allowAllHostnames())
+      .httpClient(httpClientConfig)
+      .objectMapperConfig(objectMapperConfig)
+  }
 
-    fun baseJsonRequestSpecBuilder(): RequestSpecBuilder {
-        return RequestSpecBuilder()
-                .addFilter(RequestLoggingFilter())
-                .addFilter(ResponseLoggingFilter())
-                .setConfig(baseRestAssuredConfig())
-                .setContentType(ContentType.APPLICATION_JSON.toString())
-    }
+  fun baseJsonRequestSpecBuilder(): RequestSpecBuilder {
+    return RequestSpecBuilder()
+      .addFilter(RequestLoggingFilter())
+      .addFilter(ResponseLoggingFilter())
+      .setConfig(baseRestAssuredConfig())
+      .setContentType(ContentType.APPLICATION_JSON.toString())
+  }
 }

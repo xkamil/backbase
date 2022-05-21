@@ -6,16 +6,16 @@ import java.util.*
 
 object UserRegisterReqBodySampler {
 
-    fun fullInput(modify: (UserRegisterReqBody) -> Unit = {}): UserRegisterReqBody {
-        val reqBody = UserRegisterReqBody(
-                user = UserRegisterReqBodyUser(
-                        username = UUID.randomUUID().toString().substring(25),
-                        email = "${UUID.randomUUID()} @example.com",
-                        password = UUID.randomUUID().toString().substring(10).replace("-", ""),
-                )
-        )
+  fun fullInput(modify: (UserRegisterReqBody) -> Unit = {}): UserRegisterReqBody {
+    val reqBody = UserRegisterReqBody(
+      user = UserRegisterReqBodyUser(
+        username = UUID.randomUUID().toString().substring(25),
+        email = "${UUID.randomUUID()} @example.com",
+        password = UUID.randomUUID().toString().substring(10).replace("-", ""),
+      )
+    )
 
-        modify.invoke(reqBody)
-        return reqBody
-    }
+    modify.invoke(reqBody)
+    return reqBody
+  }
 }
