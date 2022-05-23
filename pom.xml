@@ -18,6 +18,7 @@
   <modules>
     <module>service-backbase-java</module>
     <module>service-backbase-kotlin</module>
+    <module>service-backbase-groovy</module>
   </modules>
 
   <repositories>
