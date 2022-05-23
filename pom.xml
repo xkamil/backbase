@@ -19,6 +19,7 @@
     <module>service-backbase-java</module>
     <module>service-backbase-kotlin</module>
     <module>service-backbase-groovy</module>
+    <module>service-backbase-groovy-testng</module>
   </modules>
 
   <repositories>

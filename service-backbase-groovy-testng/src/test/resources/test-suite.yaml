@@ -1,0 +1,13 @@
+name: backbase-app test-suite
+parallel: tests
+threadCount: 3
+tests:
+  - name: 'API: POST /api/users'
+    classes:
+      - name: org.example.backend.api.user.UserRegisterTest
+  - name: 'API: POST /api/articles'
+    classes:
+      - name: org.example.backend.api.article.ArticleCreateTest
+  - name: 'API: GET /api/articles'
+    classes:
+      - name: org.example.backend.api.article.ArticlesListTest
