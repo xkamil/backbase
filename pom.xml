@@ -17,6 +17,7 @@
 
   <modules>
     <module>service-backbase-java</module>
+    <module>service-backbase-kotlin</module>
   </modules>
 
   <repositories>
