@@ -7,7 +7,7 @@ import static groovy.json.JsonOutput.toJson
 
 class GroovyRequestQueryParams extends RequestQueryParams {
 
-  private final static JSON_SLURPER = new JsonSlurper()
+  private final static JsonSlurper JSON_SLURPER = new JsonSlurper()
 
   @Override
   Map<String, String> asMap() {

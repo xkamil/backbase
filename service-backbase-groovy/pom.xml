@@ -119,6 +119,9 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <configScript>config/groovyc.groovy</configScript>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
