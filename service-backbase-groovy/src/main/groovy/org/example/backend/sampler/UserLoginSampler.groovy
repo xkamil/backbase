@@ -5,12 +5,12 @@ import org.example.backend.model.request.UserLoginReqBody.User
 
 class UserLoginSampler {
 
-	static UserLoginReqBody fullInput(String email, String password) {
-		new UserLoginReqBody().tap {
-			user = new User().tap {
-				it.email = email
-				it.password = password
-			}
-		}
-	}
+  static UserLoginReqBody fullInput(String email, String password) {
+    new UserLoginReqBody().tap {
+      user = new User().tap {
+        it.email = email
+        it.password = password
+      }
+    }
+  }
 }

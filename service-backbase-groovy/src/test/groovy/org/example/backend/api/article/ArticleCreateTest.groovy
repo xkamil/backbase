@@ -23,52 +23,52 @@ import static org.junit.jupiter.params.provider.Arguments.of
 @DisplayName('API: POST /api/articles')
 class ArticleCreateTest extends BaseTestSuite {
 
-	private static BackbaseApiClient backbaseApiClient
-	private static User authenticatedUserDetails
+  private static BackbaseApiClient backbaseApiClient
+  private static User authenticatedUserDetails
 
-	@BeforeAll
-	static void beforeAll() {
-		backbaseApiClient = new BackbaseApiClient().tap {
-			_authenticateUser(USER_1.email, USER_1.password)
-			authenticatedUserDetails = getCurrentUser().assertOk().user
-		}
-	}
+  @BeforeAll
+  static void beforeAll() {
+    backbaseApiClient = new BackbaseApiClient().tap {
+      _authenticateUser(USER_1.email, USER_1.password)
+      authenticatedUserDetails = getCurrentUser().assertOk().user
+    }
+  }
 
-	@DisplayName('create article')
-	@ParameterizedTest(name = 'request body contains {0}')
-	@MethodSource('provideValidArticleCreateInput')
-	void createArticle(String description, ArticleCreateReqBody reqBody) {
-		_given('valid create article request body')
+  @DisplayName('create article')
+  @ParameterizedTest(name = 'request body contains {0}')
+  @MethodSource('provideValidArticleCreateInput')
+  void createArticle(String description, ArticleCreateReqBody reqBody) {
+    _given('valid create article request body')
 
-		_when('create article request is sent')
-		def response = backbaseApiClient.createArticle(reqBody)
+    _when('create article request is sent')
+    def response = backbaseApiClient.createArticle(reqBody)
 
-		_then('article should be created')
-		def responseBody = response.assertOk()
-		def expectedTagList =
-				reqBody.article.tagList == null ? [] : reqBody.article.tagList
+    _then('article should be created')
+    def responseBody = response.assertOk()
+    def expectedTagList =
+        reqBody.article.tagList == null ? [] : reqBody.article.tagList
 
-		assertAll(
-				{ assert responseBody.article.title == reqBody.article.title },
-				{ assert responseBody.article.description == reqBody.article.description },
-				{ assert responseBody.article.body == reqBody.article.body },
-				{ assertThat(responseBody.article.tagList).containsExactlyElementsIn(expectedTagList).inOrder() },
-				{ assert !responseBody.article.favorited },
-				{ assert responseBody.article.favoritesCount == 0 },
+    assertAll(
+        { assert responseBody.article.title == reqBody.article.title },
+        { assert responseBody.article.description == reqBody.article.description },
+        { assert responseBody.article.body == reqBody.article.body },
+        { assertThat(responseBody.article.tagList).containsExactlyElementsIn(expectedTagList).inOrder() },
+        { assert !responseBody.article.favorited },
+        { assert responseBody.article.favoritesCount == 0 },
 
-				{ assert responseBody.article.author != null },
-				{ assert responseBody.article.author.username == authenticatedUserDetails.username },
-				{ assert responseBody.article.author.bio == authenticatedUserDetails.bio },
-				{ assert !responseBody.article.author.following },
-		)
+        { assert responseBody.article.author != null },
+        { assert responseBody.article.author.username == authenticatedUserDetails.username },
+        { assert responseBody.article.author.bio == authenticatedUserDetails.bio },
+        { assert !responseBody.article.author.following },
+    )
 
-	}
+  }
 
-	private static Stream<Arguments> provideValidArticleCreateInput() {
-		return Stream.of(
-				of('only required data', ArticleSampler.minimalInput()),
-				of('full data', ArticleSampler.fullInput())
-		)
-	}
+  private static Stream<Arguments> provideValidArticleCreateInput() {
+    return Stream.of(
+        of('only required data', ArticleSampler.minimalInput()),
+        of('full data', ArticleSampler.fullInput())
+    )
+  }
 
 }

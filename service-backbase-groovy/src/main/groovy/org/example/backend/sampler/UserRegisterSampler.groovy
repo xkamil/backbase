@@ -7,14 +7,14 @@ import static org.example.backend.extensions.DataGenerator.*
 
 class UserRegisterSampler {
 
-	static UserRegisterReqBody fullInput() {
-		new UserRegisterReqBody().tap {
-			user = new User().tap {
-				username = generateUsername()
-				email = generateEmail()
-				password = generatePassword()
-			}
-		}
-	}
+  static UserRegisterReqBody fullInput() {
+    new UserRegisterReqBody().tap {
+      user = new User().tap {
+        username = generateUsername()
+        email = generateEmail()
+        password = generatePassword()
+      }
+    }
+  }
 
 }

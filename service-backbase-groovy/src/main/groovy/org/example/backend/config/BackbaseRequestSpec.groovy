@@ -13,28 +13,28 @@ import pl.net.testit.serum.commons.json.JsonParser
 
 class BackbaseRequestSpec {
 
-	static RestAssuredConfig baseRestAssuredConfig() {
+  static RestAssuredConfig baseRestAssuredConfig() {
 
-		var httpClientConfig = HttpClientConfig.httpClientConfig()
-				.dontReuseHttpClientInstance()
-				.setParam(CoreConnectionPNames.CONNECTION_TIMEOUT, 30_000)
-				.setParam(CoreConnectionPNames.SO_TIMEOUT, 30_000)
+    var httpClientConfig = HttpClientConfig.httpClientConfig()
+        .dontReuseHttpClientInstance()
+        .setParam(CoreConnectionPNames.CONNECTION_TIMEOUT, 30_000)
+        .setParam(CoreConnectionPNames.SO_TIMEOUT, 30_000)
 
-		var objectMapperConfig = ObjectMapperConfig.objectMapperConfig()
-				.jackson2ObjectMapperFactory((aClass, s) -> JsonParser.getObjectMapper())
+    var objectMapperConfig = ObjectMapperConfig.objectMapperConfig()
+        .jackson2ObjectMapperFactory((aClass, s) -> JsonParser.getObjectMapper())
 
-		RestAssuredConfig.newConfig()
-				.sslConfig(SSLConfig.sslConfig().relaxedHTTPSValidation().allowAllHostnames())
-				.httpClient(httpClientConfig)
-				.objectMapperConfig(objectMapperConfig)
-	}
+    RestAssuredConfig.newConfig()
+        .sslConfig(SSLConfig.sslConfig().relaxedHTTPSValidation().allowAllHostnames())
+        .httpClient(httpClientConfig)
+        .objectMapperConfig(objectMapperConfig)
+  }
 
-	static RequestSpecBuilder baseJsonRequestSpecBuilder() {
-		return new RequestSpecBuilder()
-				.addFilter(new RequestLoggingFilter())
-				.addFilter(new ResponseLoggingFilter())
-				.setConfig(baseRestAssuredConfig())
-				.setContentType(ContentType.APPLICATION_JSON.toString())
-	}
+  static RequestSpecBuilder baseJsonRequestSpecBuilder() {
+    return new RequestSpecBuilder()
+        .addFilter(new RequestLoggingFilter())
+        .addFilter(new ResponseLoggingFilter())
+        .setConfig(baseRestAssuredConfig())
+        .setContentType(ContentType.APPLICATION_JSON.toString())
+  }
 
 }
