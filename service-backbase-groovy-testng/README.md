@@ -6,11 +6,11 @@
 
 Application Client
         |
-    Service A
+    Service A Requests
         ...
-    Service B
+    Service B Requests
         ...
-    Service C
+    Service C Requests
             |
         Service Endpoint A
             ...
@@ -32,37 +32,17 @@ Expected to use for Application Flows context testing.
 ```groovy
 ApplicationClient application = new ApplicationClient(token)
 
-SomeResponseObject responseObject = application.someService().someEndpoint().execute(someRequestObject)
+SomeResponseObject responseObject = application.someServiceRequests().someRequest(someRequestObject)
 ```
 
-#### Use Service
+#### Use ServiceRequests
 
 Expected to use for Endpoints Group context testing.
 
 ```groovy
-SomeService service = new SomeService(token)
+SomeServiceRequests service = new SomeServiceRequests(token)
 
-SomeResponseObject responseObject = service.someEndpoint().execute(someRequestObject)
-```
-
-#### Use Endpoint
-
-Expected to use for Endpoint context testing.
-
-```groovy
-SomeEndpoint endpoint = new SomeEndpoint(token)
-
-SomeResponseObject responseObject = endpoint.execute(someRequestObject)
-```
-
-### Endpoint Definition
-
-```groovy
-interface Endpoint<Input, Success, Error> {
-
-  Response<Success, Error> execute(Input body)
-
-}
+SomeResponseObject responseObject = service.someRequest(someRequestObject)
 ```
 
 ### Request Sampler

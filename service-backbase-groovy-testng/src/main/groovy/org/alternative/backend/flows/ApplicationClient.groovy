@@ -1,19 +1,19 @@
 package org.alternative.backend.flows
 
-import org.alternative.backend.endpoints.article.ArticleService
-import org.alternative.backend.endpoints.user.UserService
+import org.alternative.backend.endpoints.article.ArticleRequests
+import org.alternative.backend.endpoints.user.UserRequests
 
 class ApplicationClient {
 
-  private UserService userService
-  private ArticleService articleService
+  private UserRequests userService
+  private ArticleRequests articleService
 
   ApplicationClient(String token) {
-    userService = new UserService(token)
-    articleService = new ArticleService(token)
+    userService = new UserRequests(token)
+    articleService = new ArticleRequests(token)
   }
 
-  UserService user() { userService }
+  UserRequests user() { userService }
 
-  ArticleService article() { articleService }
+  ArticleRequests article() { articleService }
 }

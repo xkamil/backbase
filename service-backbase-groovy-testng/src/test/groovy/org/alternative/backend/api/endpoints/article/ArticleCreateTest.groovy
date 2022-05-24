@@ -24,7 +24,7 @@ class ArticleCreateTest extends BaseTestSuite {
   @BeforeClass
   void beforeClass() {
     application = new ApplicationClient(provideToken(testUser.email, testUser.password))
-    authenticatedUserDetails = application.user().getCurrentUser().execute().parse().user
+    authenticatedUserDetails = application.user().getCurrentUser().parse().user
   }
 
   @Test(description = 'create article', dataProvider = 'provideValidArticleCreateInput')
@@ -32,7 +32,7 @@ class ArticleCreateTest extends BaseTestSuite {
     _given("valid create article request body with: $description")
 
     _when('create article request is sent')
-    def response = application.article().create().execute(requestBody)
+    def response = application.article().create(requestBody)
 
     _then('article should be created')
     def responseBody = response.parse()

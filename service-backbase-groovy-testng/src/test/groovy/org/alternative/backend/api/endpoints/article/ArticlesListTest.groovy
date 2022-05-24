@@ -1,6 +1,6 @@
 package org.alternative.backend.api.endpoints.article
 
-import org.alternative.backend.endpoints.article.ArticleService
+import org.alternative.backend.endpoints.article.ArticleRequests
 import org.alternative.backend.endpoints.article.create.ArticleCreateRequestSampler
 import org.alternative.backend.endpoints.article.create.ArticleCreateResponseBody.Article
 import org.alternative.backend.endpoints.article.list.ArticlesListQueryParams
@@ -17,15 +17,15 @@ import static org.example.backend.extensions.GroovyAssertions.assertAll
 
 class ArticlesListTest extends BaseTestSuite {
 
-  ArticleService articleService
+  ArticleRequests articleService
   List<Article> existingArticles = new ArrayList<>()
   User testUser = RegisteredUsers.USER_1
 
   @BeforeClass
   void beforeClass() {
-    articleService = new ArticleService(provideToken(testUser.email, testUser.password))
+    articleService = new ArticleRequests(provideToken(testUser.email, testUser.password))
     3.times {
-      existingArticles << articleService.create().execute(new ArticleCreateRequestSampler().full()).parse().article
+      existingArticles << articleService.create(new ArticleCreateRequestSampler().full()).parse().article
     }
   }
 
@@ -35,7 +35,7 @@ class ArticlesListTest extends BaseTestSuite {
     Assumptions.assumeTrue(existingArticles.size() >= 3)
 
     _when('I get articles list')
-    def response = articleService.list().execute()
+    def response = articleService.list()
 
     _then('article details should be returned')
     def list = response.parse()
@@ -55,7 +55,7 @@ class ArticlesListTest extends BaseTestSuite {
     def filter = new ArticlesListQueryParams().tap {
       author = article.author.username
     }
-    def response = articleService.list().execute(filter)
+    def response = articleService.list(filter)
 
     _then("articles list for author $article.author should be returned")
     def list = response.parse()
@@ -75,7 +75,7 @@ class ArticlesListTest extends BaseTestSuite {
 
     _when('I get articles list with limit')
     def filter = new ArticlesListQueryParams().tap { it.limit = limit }
-    def response = articleService.list().execute(filter)
+    def response = articleService.list(filter)
 
     _then("articles list should contain $limit articles")
     def list = response.parse()
