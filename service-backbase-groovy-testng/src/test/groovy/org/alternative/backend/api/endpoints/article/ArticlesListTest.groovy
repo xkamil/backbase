@@ -1,32 +1,31 @@
-package org.example.backend.api.article
+package org.alternative.backend.api.endpoints.article
 
-import org.example.backend.BackbaseApiClient
-import org.example.backend.config.StaticTestData
-import org.example.backend.config.StaticTestData.RegisteredUsers
-import org.example.backend.model.request.queryparams.ArticlesListQueryParams
-import org.example.backend.model.response.ArticleDetailsResponseBody.Article
-import org.example.backend.sampler.ArticleSampler
+import org.alternative.backend.endpoints.article.ArticleService
+import org.alternative.backend.endpoints.article.create.ArticleCreateRequestSampler
+import org.alternative.backend.endpoints.article.create.ArticleCreateResponseBody.Article
+import org.alternative.backend.endpoints.article.list.ArticlesListQueryParams
 import org.junit.jupiter.api.Assumptions
 import org.testng.annotations.BeforeClass
 import org.testng.annotations.Test
 import pl.net.testit.serum.reporting.BaseTestSuite
 
 import static com.google.common.truth.Truth.assertThat
+import static org.alternative.backend.base.config.StaticTestData.RegisteredUsers
+import static org.alternative.backend.base.config.StaticTestData.User
+import static org.alternative.backend.flows.TokenProvider.provideToken
 import static org.example.backend.extensions.GroovyAssertions.assertAll
 
 class ArticlesListTest extends BaseTestSuite {
 
-  private static final List<Article> existingArticles = new ArrayList<>()
-  private static BackbaseApiClient backbaseApiClient
-  static StaticTestData.User testUser = RegisteredUsers.USER_1
+  ArticleService articleService
+  List<Article> existingArticles = new ArrayList<>()
+  User testUser = RegisteredUsers.USER_1
 
   @BeforeClass
-  void beforeAll() {
-    backbaseApiClient = new BackbaseApiClient().tap {
-      _authenticateUser(testUser.email, testUser.password)
-      3.times {
-        existingArticles << createArticle(ArticleSampler.fullInput()).assertOk().article
-      }
+  void beforeClass() {
+    articleService = new ArticleService(provideToken(testUser.email, testUser.password))
+    3.times {
+      existingArticles << articleService.create().execute(new ArticleCreateRequestSampler().full()).parse().article
     }
   }
 
@@ -36,10 +35,10 @@ class ArticlesListTest extends BaseTestSuite {
     Assumptions.assumeTrue(existingArticles.size() >= 3)
 
     _when('I get articles list')
-    def response = backbaseApiClient.getArticlesList()
+    def response = articleService.list().execute()
 
     _then('article details should be returned')
-    def list = response.assertOk()
+    def list = response.parse()
     assertAll(
         { assertThat(list.articles.size()).isAtLeast(existingArticles.size()) },
         { assertThat(list.articlesCount).isAtLeast(existingArticles.size()) },
@@ -49,17 +48,17 @@ class ArticlesListTest extends BaseTestSuite {
   @Test(description = 'get articles list - filter by author')
   void getArticlesFilteredTest() {
     _given('existing articles')
-    Assumptions.assumeTrue(existingArticles.size() >= 1)
-    Article article = existingArticles.get(0)
+    Assumptions.assumeTrue(!existingArticles.isEmpty())
+    Article article = existingArticles.first()
 
     _when('I get articles list filtered by author')
     def filter = new ArticlesListQueryParams().tap {
       author = article.author.username
-    }.asMap()
-    def response = backbaseApiClient.withQueryParams(filter).getArticlesList()
+    }
+    def response = articleService.list().execute(filter)
 
     _then("articles list for author $article.author should be returned")
-    def list = response.assertOk()
+    def list = response.parse()
     assertThat(list.articles).isNotEmpty()
     assertAll(
         list.articles.collect { l ->
@@ -75,11 +74,11 @@ class ArticlesListTest extends BaseTestSuite {
     def limit = 2
 
     _when('I get articles list with limit')
-    def filter = new ArticlesListQueryParams().tap { it.limit = limit }.asMap()
-    def response = backbaseApiClient.withQueryParams(filter).getArticlesList()
+    def filter = new ArticlesListQueryParams().tap { it.limit = limit }
+    def response = articleService.list().execute(filter)
 
     _then("articles list should contain $limit articles")
-    def list = response.assertOk()
+    def list = response.parse()
     assertThat(list.articles).hasSize(limit)
   }
 
