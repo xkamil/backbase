@@ -1,16 +1,23 @@
 package org.alternative.backend.endpoints.user
 
-import groovy.transform.InheritConstructors
+import io.restassured.specification.RequestSpecification
+import org.alternative.backend.ApiClient
 import org.alternative.backend.base.Response
-import org.alternative.backend.endpoints.AuthenticatedEndpoint
 import org.alternative.backend.endpoints.ErrorResponseBody
 import org.alternative.backend.endpoints.user.login.UserLoginRequestBody
 import org.alternative.backend.endpoints.user.register.UserRegisterRequestBody
 
 import static io.restassured.RestAssured.given
 
-@InheritConstructors
-class UserRequests extends AuthenticatedEndpoint {
+class UserRequests  {
+
+  private final ApiClient apiClient
+  private final RequestSpecification requestSpec
+
+  UserRequests(ApiClient apiClient) {
+    this.apiClient = apiClient
+    this.requestSpec = apiClient.getRequestSpec()
+  }
 
   Response<UserResponseBody, ErrorResponseBody> getCurrentUser() {
     def response = given(requestSpec).get('/api/user')

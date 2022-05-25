@@ -2,7 +2,8 @@ package org.alternative.backend.api.endpoints.user
 
 import groovy.transform.TypeChecked
 import io.qameta.allure.Issue
-import org.alternative.backend.endpoints.user.UserRequests
+import org.alternative.backend.ApiClient
+import org.alternative.backend.base.config.StaticTestData
 import org.alternative.backend.endpoints.user.register.UserRegisterRequestBody
 import org.alternative.backend.endpoints.user.register.UserRegisterRequestSampler
 import org.testng.annotations.BeforeClass
@@ -16,11 +17,12 @@ import static org.example.backend.extensions.GroovyAssertions.assertAll
 @TypeChecked
 class UserRegisterTest extends BaseTestSuite {
 
-  UserRequests userService
+  ApiClient apiClient
+  StaticTestData.User testUser = RegisteredUsers.USER_1
 
   @BeforeClass
   void beforeClass() {
-    userService = new UserRequests()
+    apiClient = new ApiClient().helperRequests().authenticate(testUser.email, testUser.password)
   }
 
   @Test(description = 'register user')
@@ -29,7 +31,7 @@ class UserRegisterTest extends BaseTestSuite {
     def requestBody = new UserRegisterRequestSampler().full()
 
     _when('user register request is sent')
-    def response = userService.register(requestBody)
+    def response = apiClient.user().register(requestBody)
 
     _then('response should be ok')
     def responseBody = response.parse()
@@ -54,7 +56,7 @@ class UserRegisterTest extends BaseTestSuite {
     }
 
     _when('user register request is sent')
-    def response = userService.register(requestBody)
+    def response =  apiClient.user().register(requestBody)
 
     _then('response should return error')
     assert response.getCode() == 422
@@ -72,7 +74,7 @@ class UserRegisterTest extends BaseTestSuite {
     }
 
     _when('user register request is sent')
-    def response = userService.register(requestBody)
+    def response =  apiClient.user().register(requestBody)
 
     _then('response should return error')
     assertAll(
@@ -87,7 +89,7 @@ class UserRegisterTest extends BaseTestSuite {
     _given("user register data with missing $missingField")
 
     _when('user register request is sent')
-    def response = userService.register(requestBody)
+    def response =  apiClient.user().register(requestBody)
 
     _then('response should return error')
     assertAll(

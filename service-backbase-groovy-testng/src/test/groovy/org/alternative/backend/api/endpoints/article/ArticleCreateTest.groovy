@@ -1,9 +1,9 @@
 package org.alternative.backend.api.endpoints.article
 
+import org.alternative.backend.ApiClient
 import org.alternative.backend.endpoints.article.create.ArticleCreateRequestBody
 import org.alternative.backend.endpoints.article.create.ArticleCreateRequestSampler
 import org.alternative.backend.endpoints.user.UserResponseBody
-import org.alternative.backend.flows.ApplicationClient
 import org.testng.annotations.BeforeClass
 import org.testng.annotations.DataProvider
 import org.testng.annotations.Test
@@ -12,19 +12,18 @@ import pl.net.testit.serum.reporting.BaseTestSuite
 import static com.google.common.truth.Truth.assertThat
 import static org.alternative.backend.base.config.StaticTestData.RegisteredUsers
 import static org.alternative.backend.base.config.StaticTestData.User
-import static org.alternative.backend.flows.TokenProvider.provideToken
 import static org.example.backend.extensions.GroovyAssertions.assertAll
 
 class ArticleCreateTest extends BaseTestSuite {
 
-  ApplicationClient application
-  UserResponseBody.User authenticatedUserDetails
+  ApiClient apiClient
   User testUser = RegisteredUsers.USER_1
+  UserResponseBody.User authenticatedUserDetails
 
   @BeforeClass
   void beforeClass() {
-    application = new ApplicationClient(provideToken(testUser.email, testUser.password))
-    authenticatedUserDetails = application.user().getCurrentUser().parse().user
+    apiClient = new ApiClient().helperRequests().authenticate(testUser.email, testUser.password)
+    authenticatedUserDetails = apiClient.user().getCurrentUser().parse().user
   }
 
   @Test(description = 'create article', dataProvider = 'provideValidArticleCreateInput')
@@ -32,7 +31,7 @@ class ArticleCreateTest extends BaseTestSuite {
     _given("valid create article request body with: $description")
 
     _when('create article request is sent')
-    def response = application.article().create(requestBody)
+    def response = apiClient.article().create(requestBody)
 
     _then('article should be created')
     def responseBody = response.parse()

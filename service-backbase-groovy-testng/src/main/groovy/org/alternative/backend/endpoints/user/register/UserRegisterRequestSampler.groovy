@@ -1,12 +1,10 @@
 package org.alternative.backend.endpoints.user.register
 
-import org.alternative.backend.base.RequestSampler
 
 import static org.example.backend.extensions.DataGenerator.*
 
-class UserRegisterRequestSampler implements RequestSampler<UserRegisterRequestBody> {
+class UserRegisterRequestSampler  {
 
-  @Override
   UserRegisterRequestBody minimal() {
     new UserRegisterRequestBody().tap {
       user = new UserRegisterRequestBody.User().tap {
@@ -17,7 +15,6 @@ class UserRegisterRequestSampler implements RequestSampler<UserRegisterRequestBo
     }
   }
 
-  @Override
   UserRegisterRequestBody full() { minimal() }
 
 }
